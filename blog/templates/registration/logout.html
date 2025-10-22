@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}Déconnexion - Mon Blog{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>Déconnexion</h1>
+            <p>Vous avez été déconnecté avec succès.</p>
+        </div>
+        
+        <div class="auth-footer">
+            <a href="{% url 'article_list' %}" class="btn btn-primary">Retour à l'accueil</a>
+            <p>ou <a href="{% url 'login' %}">se reconnecter</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

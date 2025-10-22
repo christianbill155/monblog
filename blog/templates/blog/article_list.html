@@ -1,0 +1,113 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block title %}Articles récents - Mon Blog{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <div class="container">
+        <h1>Articles récents</h1>
+        <p>Découvrez les dernières publications</p>
+    </div>
+</div>
+
+<section class="articles-section">
+    <div class="container">
+        {% if articles %}
+            <div class="articles-grid">
+                {% for article in articles %}
+                <article class="article-card">
+                    <div class="article-meta">
+                        <span class="article-date">{{ article.date_publication|date:"d F Y" }}</span>
+                        {% if article.auteur %}
+                        <span class="article-author">par {{ article.auteur }}</span>
+                        {% endif %}
+                    </div>
+                    <h2 class="article-title">
+                        <a href="{% url 'article_detail' article.pk %}">{{ article.titre }}</a>
+                    </h2>
+                    <p class="article-excerpt">{{ article.contenu|truncatewords:30 }}</p>
+                    {% if article.tags %}
+                    <div class="article-tags">
+                        {% for tag in article.tags.all %}
+                        <span class="tag">{{ tag.nom }}</span>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <a href="{% url 'article_detail' article.pk %}" class="btn btn-primary">Lire la suite</a>
+                </article>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="empty-state">
+                <h2>Aucun article publié pour le moment</h2>
+                <p>Soyez le premier à partager vos idées!</p>
+                {% if user.is_authenticated %}
+                <a href="{% url 'create_article' %}" class="btn btn-primary">Créer un article</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="btn btn-primary">Se connecter pour écrire</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .articles-section {
+        padding: 40px 0;
+    }
+
+    .article-card {
+        background-color: var(--white);
+        border: 1px solid var(--gray);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin-bottom: 20px;
+        transition: var(--transition);
+    }
+
+    .article-card:hover {
+        box-shadow: var(--shadow-hover);
+    }
+
+    .article-meta {
+        font-size: 0.9rem;
+        color: var(--gray-medium);
+        margin-bottom: 10px;
+    }
+
+    .article-title {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .article-excerpt {
+        margin-bottom: 10px;
+    }
+
+    .article-tags {
+        margin: 10px 0;
+    }
+
+    .tag {
+        background-color: var(--gray-light);
+        border-radius: var(--border-radius);
+        padding: 5px 10px;
+        margin-right: 5px;
+        font-size: 0.9rem;
+    }
+
+    .empty-state {
+        text-align: center;
+        padding: 40px 0;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Script JavaScript supplémentaire
+</script>
+{% endblock %}
