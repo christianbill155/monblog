@@ -64,17 +64,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'monblog.wsgi.application'
 
-# Database par défaut (sqlite) — override par variables d'environnement ou dans prod.py
-DATABASES = {
-    'default': {
-        'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': os.environ.get('DB_NAME', BASE_DIR / 'db.sqlite3'),
-        'USER': os.environ.get('DB_USER', ''),
-        'PASSWORD': os.environ.get('DB_PASSWORD', ''),
-        'HOST': os.environ.get('DB_HOST', ''),
-        'PORT': os.environ.get('DB_PORT', ''),
-    }
-}
+# # Database par défaut (sqlite) — override par variables d'environnement ou dans prod.py
+# DATABASES = {
+#     'default': {
+#         'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.sqlite3'),
+#         'NAME': os.environ.get('DB_NAME', BASE_DIR / 'db.sqlite3'),
+#         'USER': os.environ.get('DB_USER', ''),
+#         'PASSWORD': os.environ.get('DB_PASSWORD', ''),
+#         'HOST': os.environ.get('DB_HOST', ''),
+#         'PORT': os.environ.get('DB_PORT', ''),
+#     }
+# }
 
 # Sécurité (peut être ajusté dans prod.py)
 SECURE_SSL_REDIRECT = True
