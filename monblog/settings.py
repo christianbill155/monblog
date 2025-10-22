@@ -23,8 +23,14 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'change-me-in-dev')
 
 # Valeur par défaut ; override dans dev/prod
 DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split() if os.environ.get('DJANGO_ALLOWED_HOSTS') else []
-
+#ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', '').split() if os.environ.get('DJANGO_ALLOWED_HOSTS') else []
+ALLOWED_HOSTS = [
+    'monblog.onrender.com',
+    'localhost',
+    '127.0.0.1',
+    '10.203.24.8',
+    '.onrender.com',
+]
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -35,15 +41,6 @@ INSTALLED_APPS = [
     'blog',
 ]
 
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
 
 ROOT_URLCONF = 'monblog.urls'
 

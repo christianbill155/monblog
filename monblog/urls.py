@@ -16,9 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponse
+
+def home(request):
+    return JsonResponse({"message": "Django app is running!"})
+
+def health_check(request):
+    return JsonResponse({"status": "healthy"})
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('monblogmonitor/', health_check),  # Health check pour Render
+    path('health/', health_check),          # Health check alternatif
+    path('', home),                         # Page d'accueil
     path('blog/', include('blog.urls')),  # Include the blog app URLs   
 ]
 
