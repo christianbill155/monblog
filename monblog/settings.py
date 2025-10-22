@@ -29,8 +29,13 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '10.203.24.8',
+    '10.203.26.168',
     '.onrender.com',
+    '.render.com',
+    '10.203.0.0/16',  # Tout le range d'IPs de Render
+    '*',  # Temporairement pour tester
 ]
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
