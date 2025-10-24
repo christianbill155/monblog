@@ -14,7 +14,7 @@ SECRET_KEY = 'django-insecure-7lumoy6f9h8b10)d*i9r5y*z^$+9vg-p!fm1&4p^p8zq8oi*ou
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['monblogfirst.com', 'www.monblogfirst.com']
+ALLOWED_HOSTS = ['ctbcblob.pythonanywhere.com']
 
 
 # Application definition
